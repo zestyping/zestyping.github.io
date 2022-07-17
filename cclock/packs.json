@@ -1,0 +1,12 @@
+{
+  "name": "Action Clock by climateclock.org",
+  "updated": "2022-07-17T18:51:03Z",
+  "packs": {
+    "v1": {
+      "path": "/cclock/v1.f4a09eb4651480f7a20a2849544f80e2.pk",
+      "hash": "f4a09eb4651480f7a20a2849544f80e2",
+      "published": "2022-07-17T18:49:20Z",
+      "enabled": true
+    }
+  }
+}
