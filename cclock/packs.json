@@ -13,6 +13,12 @@
       "hash": "e5be85c68ae680dd2b8fe001e4d82798",
       "published": "2022-07-18T07:29:37Z",
       "enabled": true
+    },
+    "v3": {
+      "path": "/cclock/v3.eacbbf89c33d9be378a8c655a160194d.pk",
+      "hash": "eacbbf89c33d9be378a8c655a160194d",
+      "published": "2022-07-18T17:50:55Z",
+      "enabled": true
     }
   }
 }
