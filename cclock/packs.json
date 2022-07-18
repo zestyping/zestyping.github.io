@@ -7,6 +7,12 @@
       "hash": "f4a09eb4651480f7a20a2849544f80e2",
       "published": "2022-07-17T18:49:20Z",
       "enabled": true
+    },
+    "v2": {
+      "path": "/cclock/v2.e5be85c68ae680dd2b8fe001e4d82798.pk",
+      "hash": "e5be85c68ae680dd2b8fe001e4d82798",
+      "published": "2022-07-18T07:29:37Z",
+      "enabled": true
     }
   }
 }
