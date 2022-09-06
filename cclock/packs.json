@@ -6,18 +6,24 @@
       "url": "https://zestyping.github.io/cclock/v1.f4a09eb4651480f7a20a2849544f80e2.pk",
       "hash": "f4a09eb4651480f7a20a2849544f80e2",
       "published": "2022-07-17T18:49:20Z",
-      "enabled": true
+      "enabled": false
     },
     "v2": {
       "url": "https://zestyping.github.io/cclock/v2.e5be85c68ae680dd2b8fe001e4d82798.pk",
       "hash": "e5be85c68ae680dd2b8fe001e4d82798",
       "published": "2022-07-18T07:29:37Z",
-      "enabled": true
+      "enabled": false
     },
     "v3": {
       "url": "https://zestyping.github.io/cclock/v3.eacbbf89c33d9be378a8c655a160194d.pk",
       "hash": "eacbbf89c33d9be378a8c655a160194d",
       "published": "2022-07-18T17:50:55Z",
+      "enabled": false
+    },
+    "v4": {
+      "url": "https://zestyping.github.io/cclock/v4.b64e78b360af844ea6ab3af308630d60.pk",
+      "hash": "b64e78b360af844ea6ab3af308630d60",
+      "published": "2022-09-06T11:28:37Z",
       "enabled": true
     }
   }
