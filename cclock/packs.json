@@ -2,6 +2,12 @@
   "name": "Action Clock by climateclock.world",
   "updated": "2022-07-17T18:51:03Z",
   "packs": {
+    "v4-v0": {
+      "url": "https://zestyping.github.io/cclock/v4-v0.526d9db44c73ad7acc5db038d970f982.pk",
+      "hash": "526d9db44c73ad7acc5db038d970f982",
+      "published": "2023-06-05T08:43:46Z",
+      "enabled": true
+    },
     "v3-v0": {
       "url": "https://zestyping.github.io/cclock/v3-v0.46eca95cfd21e7954d6ac6be8f0a6f12.pk",
       "hash": "46eca95cfd21e7954d6ac6be8f0a6f12",
