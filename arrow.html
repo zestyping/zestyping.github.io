@@ -2,9 +2,9 @@
 * { font-size: 16px; }
 #arrow {
   transform-origin: center;
-  font-size: 128px;
-  width: 100px;
-  height: 100px;
+  font-size: 256px;
+  width: 200px;
+  height: 200px;
   top: 50%;
   left: 50%;
   position: absolute;
@@ -26,7 +26,7 @@ var arrow = document.getElementById('arrow');
 window.addEventListener(
   "deviceorientation",
   (event) => {
-      degrees.value = -Math.round(event.alpha);
+      degrees.value = Math.round(event.alpha);
       arrow.style.transform = 'rotate(' + degrees.value + 'deg)';
   },
   true,
