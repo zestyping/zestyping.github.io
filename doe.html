@@ -1,0 +1,39 @@
+<style>
+* { font-size: 24px; }
+input { width: 100%; }
+#arrow {
+  transform-origin: center;
+  font-size: 200px;
+  line-height: 200px;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+  position: absolute;
+}
+</style>
+
+<input id="degrees">
+
+<div id="arrow">
+  ⬆︎
+</div>
+
+<script>
+var degrees = document.getElementById('degrees');
+degrees.value = '123';
+var arrow = document.getElementById('arrow');
+  arrow.style.transform = 'rotate(' + degrees.value + 'deg)';
+
+window.addEventListener(
+  "deviceorientation",
+  (event) => {
+      degrees.value = Math.round(event.alpha);
+      arrow.style.transform = 'rotate(' + degrees.value + 'deg)';
+  },
+  true,
+);
+</script>

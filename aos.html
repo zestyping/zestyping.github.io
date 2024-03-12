@@ -1,6 +1,6 @@
 <style>
 * { font-size: 24px; }
-#info { width: 100%; }
+input, textarea { width: 100%; }
 #arrow {
   transform-origin: center;
   font-size: 200px;
@@ -16,7 +16,7 @@
 }
 </style>
 
-<input id="info">
+<textarea id="info" rows=5></textarea>
 
 <div id="arrow">
   ⬆︎
@@ -29,7 +29,8 @@ const sensor = new AbsoluteOrientationSensor({
   frequency: 10, referenceFrame: 'screen'
 });
 sensor.addEventListener('reading', () => {
-  info.value = sensor.quaternion;
+  [a, b, c, d] = sensor.quaternion;
+  info.value = (a.toFixed(3) + '\n' + b.toFixed(3) + '\n' + c.toFixed(3) + '\n' + d.toFixed(3));
 });
 
 Promise.all([
