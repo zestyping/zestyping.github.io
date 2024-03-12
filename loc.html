@@ -1,0 +1,26 @@
+<textarea rows=40 cols=80 id="log"></textarea>
+
+<script>
+
+var log = document.getElementById('log');
+
+if (window.DeviceMotionEvent) {
+  window.addEventListener(
+    "devicemotion",
+    (event) => {
+        log.value += 'motion: ' + event.acceleration + '\n';
+    },
+    true,
+  );
+}
+
+if (window.DeviceOrientationEvent) {
+  window.addEventListener(
+    "deviceorientation",
+    (event) => {
+        log.value += 'orientation: ' + event.alpha + ', ' + event.beta + ', ' + event.gamma + '\n';
+    },
+    true,
+  );
+}
+</script>
