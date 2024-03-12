@@ -1,4 +1,4 @@
-<textarea rows=4 cols=80 id="status"></textarea>
+<textarea rows=4 cols=80 id="stat"></textarea>
 
 <textarea rows=40 cols=80 id="log"></textarea>
 
@@ -6,14 +6,17 @@
 <script>
 
 var log = document.getElementById('log');
-var status = document.getElementById('status');
+var stat = document.getElementById('stat');
+
+log.value = 'foo';
+stat.value = 'bar';
 
 if (window.DeviceOrientationEvent) {
   window.addEventListener(
     "deviceorientation",
     (event) => {
         log.value += 'orientation: ' + event.alpha + ', ' + event.beta + ', ' + event.gamma + '\n';
-        status.value = 'orientation: ' + event.alpha + ', ' + event.beta + ', ' + event.gamma;
+        stat.value = 'orientation: ' + event.alpha + ', ' + event.beta + ', ' + event.gamma;
     },
     true,
   );
