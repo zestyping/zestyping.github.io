@@ -45,6 +45,7 @@ function handleReading(quaternion) {
   // according to the quaternion from the sensor.  Here's the rotation matrix:
   // https://w3c.github.io/orientation-sensor/#convert-quaternion-to-rotation-matrix
 
+  qw = -qw;
   var y = 1;
   var z = 0;
 
@@ -66,7 +67,7 @@ function handleReading(quaternion) {
 
   info.value = (qx.toFixed(3) + '\n' + qy.toFixed(3) + '\n' + qz.toFixed(3) + '\n' + qw.toFixed(3) + '\n\n' + rx.toFixed(3) + '\n' + ry.toFixed(3) + '\n' + rz.toFixed(3) + '\n\n' + heading);
 
-  arrow.style.transform = 'rotate(' + heading + 'deg)';
+  arrow.style.transform = 'rotate(-' + heading + 'deg)';
 };
 
 // See the API specification at: https://w3c.github.io/orientation-sensor
@@ -84,7 +85,7 @@ Promise.all([
 ]).then((results) => {
   if (results.every((result) => result.state === "granted")) {
     sensor.start();
-    stat.value = "Sensor started.";
+    stat.value = "Sensor started...";
   } else {
     stat.value = "No permissions to use AbsoluteOrientationSensor.";
   }
