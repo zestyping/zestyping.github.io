@@ -37,19 +37,22 @@ function handleReading(quaternion) {
   // top of the phone as the "forward" direction; when the phone is held
   // upright, we want to treat the direction out the back of the phone as the
   // "forward" direction.  So, let's determine the compass heading of the
-  // phone based on a vector at a 45-degree angle to the phone, between the
-  // positive Y-axis and the negative Z-axis in the figure at:
+  // phone based on the vector between these directions, i.e. at a 45-degree
+  // angle between the positive Y-axis and the negative Z-axis in this figure:
   // https://w3c.github.io/orientation-sensor/#absoluteorientationsensor-model
 
-  // So, let's take this unit vector (0, 1/sqrt(2), -1/sqrt(2)) and rotate it
-  // according to the quaternion from the sensor.  Here's the rotation matrix:
-  // https://w3c.github.io/orientation-sensor/#convert-quaternion-to-rotation-matrix
-
-  qw = -qw;
+  // To find the current "forward" direction of the phone, we want to take this
+  // vector, (0, 1, -1), and apply the same rotation as the phone's rotation.
   var y = 1;
   var z = -1;
 
-  // The vector's x component is zero, so we ignore the first row of the matrix.
+  // From experimentation, it looks like the quaternion from the sensor is
+  // the inverse rotation, so we need to flip the fourth component.
+  qw = -qw;
+
+  // This section explains how to convert the quaternion to a rotation matrix:
+  // https://w3c.github.io/orientation-sensor/#convert-quaternion-to-rotation-matrix
+  // Now let's multiply the forward vector by the rotation matrix.
   var rx = y * (2*qx*qy + 2*qw*qz) + z * (2*qx*qz - 2*qw*qy);
   var ry = y * (1 - 2*qx*qx - 2*qz*qz) + z * (2*qy*qz + 2*qw*qx);
   var rz = y * (2*qy*qz + 2*qw*qx) + z * (1 - 2*qx*qx - 2*qy*qy);
@@ -57,7 +60,7 @@ function handleReading(quaternion) {
   // This gives us a rotated vector indicating the "forward" direction of the
   // phone with respect to the earth.  We only care about the orientation of
   // this vector in the XY plane (the plane tangential to the ground), i.e.
-  // the heading of (rx, ry) where (0, 1) is north.
+  // the heading of the (rx, ry) vector, where (0, 1) is north.
 
   var radians = Math.atan2(ry, rx);
   var degrees = radians * 180 / Math.PI;  // counterclockwise from +X axis
@@ -65,13 +68,15 @@ function handleReading(quaternion) {
   if (heading < 0) heading += 360;
   heading = Math.round(heading);
 
-  info.value = (qx.toFixed(3) + '\n' + qy.toFixed(3) + '\n' + qz.toFixed(3) + '\n' + qw.toFixed(3) + '\n\n' + rx.toFixed(3) + '\n' + ry.toFixed(3) + '\n' + rz.toFixed(3) + '\n\n' + heading);
+  info.value = (qx.toFixed(3) + '\n' + qy.toFixed(3) + '\n' + qz.toFixed(3) + '\n' + qw.toFixed(3) + '\n\n' + rx.toFixed(3) + '\n' + ry.toFixed(3) + '\n' + rz.toFixed(3) + '\n\nHeading: ' + heading);
 
   // To make the arrow point north, rotate it opposite to the phone rotation.
   arrow.style.transform = 'rotate(-' + heading + 'deg)';
 };
 
 // See the API specification at: https://w3c.github.io/orientation-sensor
+// We use referenceFrame: 'screen' because the web page will rotate when
+// the phone switches from portrait to landscape.
 const sensor = new AbsoluteOrientationSensor({
   frequency: 10, referenceFrame: 'screen'
 });
